@@ -97,6 +97,7 @@ def choose_hero():
         armor_name = request.form['armor']
         unit_classes = request.form['unit_classes']
 
+
 @app.route("/choose-enemy/", methods=['post', 'get'])
 def choose_enemy():
     # TODO кнопка выбор соперников. 2 метода GET и POST
