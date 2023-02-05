@@ -20,11 +20,11 @@ class Weapon:
     name: str
     max_damage: float
     min_damage: float
-    stamina_per_turn: float
+    stamina_per_hit: float
 
     @property
     def damage(self):
-        return round(uniform(self.min_damage,self.max_damage), 1)
+        return round(uniform(self.min_damage, self.max_damage), 1)
 
 
 @dataclass
@@ -71,4 +71,4 @@ class Equipment:
         with open("./data/equipment.json") as file:
             data = json.load(file)
             equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
-            return equipment_schema.load(data)
+            return equipment_schema().load(data)
