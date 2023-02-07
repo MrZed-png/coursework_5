@@ -97,10 +97,10 @@ def choose_hero():
         armor_name = request.form['armor']
         unit_class = request.form['unit_classes']
         # TODO Добавить проверку что класс с таким именем существует
-        player = PlayerUnit(name=name, unit_classes=unit_classes.get(unit_class))
+        player = PlayerUnit(name=name, unit_class=unit_classes.get(unit_class))
         # TODO Обработать отсутствующею броню и оружие
-        player.equp_armor(Equipment().get_armor(armor_name))
-        player.equp_weapon(Equipment().get_weapon(weapon_name))
+        player.equip_armor(Equipment().get_armor(armor_name))
+        player.equip_weapon(Equipment().get_weapon(weapon_name))
         heroes['player'] = player
         return redirect(url_for('choose_enemy'))
 
@@ -128,13 +128,13 @@ def choose_enemy():
         armor_name = request.form['armor']
         unit_class = request.form['unit_classes']
         # TODO Добавить проверку что класс с таким именем существует
-        enemy = EnemyUnit(name=name, unit_classes=unit_classes.get(unit_class))
+        enemy = EnemyUnit(name=name, unit_class=unit_classes.get(unit_class))
         # TODO Обработать отсутствующею броню и оружие
-        enemy.equp_armor(Equipment().get_armor(armor_name))
-        enemy.equp_weapon(Equipment().get_weapon(weapon_name))
+        enemy.equip_armor(Equipment().get_armor(armor_name))
+        enemy.equip_weapon(Equipment().get_weapon(weapon_name))
         heroes['enemy'] = enemy
         return redirect(url_for('start_fight'))
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

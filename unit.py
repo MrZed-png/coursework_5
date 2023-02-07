@@ -103,12 +103,12 @@ class PlayerUnit(BaseUnit):
         # TODO результат функции должен возвращать следующие строки:
         if self.stamina < self.weapon.stamina_per_turn:
             f"{self.name} попытался использовать {self.weapon.name}, но у него не хватило выносливости."
-        damage =self._count_damage(target)
+        damage = self._count_damage(target)
         if damage > 0:
             return (
                 f"{self.name} используя {self.weapon.name} пробивает {target.armor.name}"
                 f" соперника и наносит {damage} урона."
-                )
+            )
         return (
             f"{self.name} используя {self.weapon.name} наносит удар, но {target.armor.name}"
             f" cоперника его останавливает."
