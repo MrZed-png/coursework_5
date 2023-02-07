@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from base import Arena
 from classes import unit_classes
 from equipment import Equipment
-from unit import BaseUnit, PlayerUnit
+from unit import BaseUnit, PlayerUnit, EnemyUnit
 
 app = Flask(__name__)
 
@@ -97,7 +97,7 @@ def choose_hero():
         armor_name = request.form['armor']
         unit_class = request.form['unit_classes']
         # TODO Добавить проверку что класс с таким именем существует
-        player = PlayerUnit(name=name, unit_classes=unit_classes.gey(unit_class))
+        player = PlayerUnit(name=name, unit_classes=unit_classes.get(unit_class))
         # TODO Обработать отсутствующею броню и оружие
         player.equp_armor(Equipment().get_armor(armor_name))
         player.equp_weapon(Equipment().get_weapon(weapon_name))
@@ -128,11 +128,11 @@ def choose_enemy():
         armor_name = request.form['armor']
         unit_class = request.form['unit_classes']
         # TODO Добавить проверку что класс с таким именем существует
-        enemy = PlayerUnit(name=name, unit_classes=unit_classes.gey(unit_class))
+        enemy = EnemyUnit(name=name, unit_classes=unit_classes.get(unit_class))
         # TODO Обработать отсутствующею броню и оружие
         enemy.equp_armor(Equipment().get_armor(armor_name))
         enemy.equp_weapon(Equipment().get_weapon(weapon_name))
-        heroes['player'] = enemy
+        heroes['enemy'] = enemy
         return redirect(url_for('start_fight'))
 
 
