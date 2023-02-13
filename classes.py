@@ -14,7 +14,6 @@ class UnitClass:
 
 
 WarriorClass = UnitClass(
-    # TODO Инициализируем экземпляр класса UnitClass и присваиваем ему необходимые значения аттрибуотов
     name='Воин',
     max_health=60,
     max_stamina=30,
@@ -24,7 +23,7 @@ WarriorClass = UnitClass(
     skill=FuryPunch(),
 )
 
-ThiefClass = UnitClass(  # TODO действуем так же как и с войном
+ThiefClass = UnitClass(
     name='Вор',
     max_health=50,
     max_stamina=25,

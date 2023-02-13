@@ -29,7 +29,6 @@ class Weapon:
 
 @dataclass
 class EquipmentData:
-    # TODO содержит 2 списка - с оружием и с броней
     weapons: list[Weapon]
     armors: list[Armor]
 
@@ -40,34 +39,29 @@ class Equipment:
         self.equipment = self._get_equipment_data()
 
     def get_weapon(self, weapon_name) -> Weapon | None:
-        # TODO возвращает объект оружия по имени
         for weapon in self.equipment.weapons:
             if weapon_name == weapon_name:
                 return weapon
         return None
 
     def get_armor(self, armor_name) -> Armor | None:
-        # TODO возвращает объект брони по имени
         for armor in self.equipment.armors:
             if armor_name == armor_name:
                 return armor
         return None
 
     def get_weapons_names(self) -> list:
-        # TODO возвращаем список с оружием
         return [
             weapon.name for weapon in self.equipment.weapons
         ]
 
     def get_armors_names(self) -> list:
-        # TODO возвращаем список с броней
         return [
             armor.name for armor in self.equipment.armors
         ]
 
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
-        # TODO этот метод загружает json в переменную EquipmentData
         with open("./data/equipment.json") as file:
             data = json.load(file)
             equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
